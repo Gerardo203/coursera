@@ -22,17 +22,27 @@ f_vector <- read.table('UCI HAR Dataset/features.txt')
 act_lables <- read.table('UCI HAR Dataset/activity_labels.txt')
 
 # labeling
-colnames(act_lables) <- c('id', 'activity')
 
 colnames(x_train) <- f_vector[,2]
-colnames(y_train) <- 'activity'
-colnames(subject_train) <- 'subject'
+colnames(y_train) <- 'activityId'
+colnames(subject_train) <- 'subjectId'
 
 colnames(x_test) <- f_vector[,2]
-colnames(y_train) <- 'activity'
-colnames(subject_train) <- 'subject'
+colnames(y_test) <- 'activityId'
+colnames(subject_test) <- 'subjectId'
+
+colnames(act_lables) <- c('activityId', 'activityType')
 
 # merging
+test_data <- cbind(y_test,subject_test,x_test)
+train_data <- cbind(y_train,subject_train,x_train)
+data <- rbind(test_data,train_data)
 
+
+# Extracting means and stdevs
+
+colNames <- colnames(data)
+colNames<-colNames[grep('std|mean',colNames)]
+means_std <- data[,colNames]
 
 
