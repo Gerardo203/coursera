@@ -42,7 +42,9 @@ data <- rbind(test_data,train_data)
 # Extracting means and stdevs
 
 colNames <- colnames(data)
-colNames<-colNames[grep('std|mean',colNames)]
+colNames<-colNames[c(1,2,grep('std|mean',colNames))]
 means_std <- data[,colNames]
 
+export_data <- aggregate(. ~subjectId + activityId, means_std, mean)
+write.table(export_data, "secTidySet.txt", row.name=FALSE)
 
