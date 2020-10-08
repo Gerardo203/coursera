@@ -1,0 +1,16 @@
+---
+title: "Code Book"
+author: "Gerardo Arciniegas"
+date: "10/8/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Code Book
+
+x_train, y_train, x_test, y_test, subject_train and subject_test are the variables measured in the downloaded data 
+x_data, y_data and subject_data are the variables merged for analysis
+features contains the correct names for the x_data dataset, are the names for variables
